@@ -2,7 +2,7 @@ Validate Mozambican MSISDNs
 
 ## Installation
 
-`pip install mz_msisdn`
+`pip install mz-msisdn`
 
 ## Validating Numbers
 
