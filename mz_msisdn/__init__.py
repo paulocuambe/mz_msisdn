@@ -1,16 +1,17 @@
-def number_is_valid(number: str, inter: bool = True) -> list:
+def mz_validator(number: str, nr_format: str = "international") -> list:
     """ Verify if the given number is valid
 
     Args:
         number (str): The phone number to be validated
-        inter (bool, optional): The number has international identification code. Defaults to True.
+        nr_format (str, optional): The number has international identification code. Defaults to international.
 
     Returns:
         list: return a list containing all errors identified. If the list is empty it means the number is valid.
     """
     number = number.strip()
     network_codes = ["82", "83", "84", "85", "86", "87"]
-    number_size = 12 if inter else 9
+    inter_format = True if nr_format == "international" else False
+    number_size = 12 if inter_format else 9
     error_messages = []
 
     error_type = {
@@ -23,7 +24,7 @@ def number_is_valid(number: str, inter: bool = True) -> list:
         error_messages.append(
             error_type["size"].replace(":attr:", str(number_size)))
 
-    if inter:
+    if inter_format:
         number = number.replace("+", "")
 
         if "258" not in number[:3]:
